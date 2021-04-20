@@ -32,4 +32,6 @@ export class OwnersService {
   delete(href: string){
     return this.http.delete(href);
   }
+
+  
 }
