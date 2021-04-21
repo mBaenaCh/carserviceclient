@@ -12,7 +12,9 @@ export class OwnersService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<any> {
+    
     return this.http.get(this.OWNERS_API);
+    
   }
 
   get(dni: string){
