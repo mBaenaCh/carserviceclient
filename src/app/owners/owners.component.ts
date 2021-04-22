@@ -13,13 +13,28 @@ export class OwnersComponent implements OnInit {
   owner: any = {};
   sub: Subscription;
 
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private ownersService: OwnersService) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      
+      const dni = params['dni'];
+      if(dni) {
+        this.ownersService.get(dni).subscribe((owner: any) =>{
+          if(owner) {
+            console.log(owner);
+            this.owner = owner._embedded.owners[0];
+            console.log(this.owner);
+            this.owner.href = owner._embedded.owners[0]._links.self.href;
+            console.log(this.owner.href);
+          } else {
+            console.log(`Car with id '${dni}' not found, returning to list`);
+            this.gotoList();
+          }
+        });
+      }
     });
   }
 
@@ -32,7 +47,7 @@ export class OwnersComponent implements OnInit {
   }
 
   save(form: NgForm){
-    this.ownersService.create(form).subscribe(result => {
+    this.ownersService.save(form).subscribe(result => {
       this.gotoList();
     }, error => console.error(error));
   }
