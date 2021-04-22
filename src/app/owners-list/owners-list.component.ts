@@ -12,6 +12,7 @@ export class OwnersListComponent implements OnInit {
 
   ngOnInit() {
     this.ownerService.getAll().subscribe(data => {
+      console.log(data._embedded.owners.href);
       this.owners = data._embedded.owners.filter((owner) => {
         const dni = parseInt(owner.dni, 10);
         if(isNaN(dni)){
