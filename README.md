@@ -25,3 +25,19 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Components added
+
+1. Owners
+
+Is the equivalent to "cars-edit". Allows the creation, edit or deletion of owners.
+
+2. Owners-list
+
+Is the equivalent to "car-list". List all the owners created or founded in the owners API.
+
+## Another aditions
+
+1. Owners service
+
+Its the intermediary between the front-end and the requests to the Owners API, the requests are related to the CRUD operations.
